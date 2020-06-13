@@ -1,0 +1,14 @@
+[
+    {
+        "text": "Home",
+        "path": "/"
+    },
+    {
+        "text": "Bio",
+        "path": "/bio"
+    },
+    {
+        "text": "Projects",
+        "path": "https://madewithvuejs.com/vuetify"
+    }
+]
