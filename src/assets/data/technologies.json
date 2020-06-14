@@ -1,0 +1,37 @@
+[
+    {
+        "text": "Laravel",
+        "icon": "fab fa-laravel",
+        "color": "orange darken-2"
+    },
+    {
+        "text": "VueJs",
+        "icon": "fab fa-vuejs",
+        "color": "#15aabf"
+    },
+    {
+        "text": "Node",
+        "icon": "fab fa-node",
+        "color": "green"
+    },
+    {
+        "text": "Docker",
+        "icon": "fab fa-docker",
+        "color": "blue"
+    },
+    {
+        "text": "Python",
+        "icon": "fab fa-python",
+        "color": "blue lighten-3"
+    },
+    {
+        "text": "AWS",
+        "icon": "fab fa-aws",
+        "color": "orange lighten-3"
+    },
+    {
+        "text": "PHP",
+        "icon": "fab fa-php",
+        "color": "#8892bf"
+    }
+]
