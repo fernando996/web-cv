@@ -12,25 +12,28 @@
               <v-card-title>Fernando Martins</v-card-title>
             </v-img>
             <v-card-subtitle class="black--text">Software Engineer</v-card-subtitle>
+            <v-card-text>
+              <div>GDG Madeira &amp; GDG Tech Sessions</div>
+            </v-card-text>
           </v-card>
-          <!-- <h1 class="display-1 font-weight-thin mb-4">Vuetify.js</h1>
-          <h4 class="subheading">Build your application today!</h4>-->
         </v-col>
       </v-row>
     </v-parallax>
-
-    <HelloWorld />
+    <SmallBio />
+    <GDGProjects />
   </div>
 </template>
 
 <script>
 // // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import SmallBio from "@/components/SmallBio.vue";
+import GDGProjects from "@/components/GDGProjects.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld
+    SmallBio,
+    GDGProjects
   }
 };
 </script>
