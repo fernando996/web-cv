@@ -1,0 +1,17 @@
+[
+    {
+        "text": "Facebook",
+        "href": "https://www.facebook.com/fernando.martins.35110",
+        "icon": "fab fa-facebook-square"
+    },
+    {
+        "text": "Instagram",
+        "href": "https://www.instagram.com/fernando.j.ma/",
+        "icon": "fab fa-instagram"
+    },
+    {
+        "text": "GitHub",
+        "href": "https://github.com/fernando996",
+        "icon": "fab fa-github"
+    }
+]
