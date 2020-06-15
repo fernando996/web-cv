@@ -7,8 +7,8 @@ import VueGtag from "vue-gtag";
 Vue.config.productionTip = false
 
 Vue.use(VueGtag, {
-  config: { id: "UA-169368578-1" }
-});
+  config: { id: "UA-169368578-1" },
+}, router);
 
 new Vue({
   vuetify,

@@ -23,6 +23,7 @@
             <v-btn
               text
               href="https://gdgmadeira.xyz/"
+              @click="_gtagGDGs('GDG Madeira')"
               target="_blank"
               color="deep-purple accent-4"
             >Read More</v-btn>
@@ -49,6 +50,7 @@
               text
               href="http://tech-sessions.com/"
               target="_blank"
+              @click="_gtagGDGs('GDG Tech-session')"
               color="deep-purple accent-4"
             >Read More</v-btn>
           </v-card-text>
@@ -68,7 +70,15 @@ export default {
 
   data: () => ({
     technologies: technologies
-  })
+  }),
+  methods: {
+    _gtagGDGs(text) {
+      this.$gtag.event("Projects", {
+        event_category: "Click",
+        event_label: text
+      });
+    }
+  }
 };
 </script>
 
