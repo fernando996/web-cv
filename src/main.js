@@ -1,19 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import VueMaterial from "./modules/VueMaterial.js";
+import vuetify from './plugins/vuetify';
+import router from './router'
+import VueGtag from "vue-gtag";
 
 Vue.config.productionTip = false
 
-// import Vue from 'vue'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css'
-import vuetify from './plugins/vuetify';
-
-Vue.use(VueMaterial)
+Vue.use(VueGtag, {
+  config: { id: "UA-169368578-1" },
+}, router);
 
 new Vue({
   vuetify,
-
-  //VueMaterial,
+  router,
   render: h => h(App)
 }).$mount('#app')
