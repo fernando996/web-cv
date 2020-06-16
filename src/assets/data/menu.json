@@ -1,10 +1,12 @@
 [
     {
         "text": "Home",
-        "path": "/"
+        "path": "/",
+        "icon": "fas fa-home"
     },
     {
         "text": "Resume",
-        "path": "/resume"
+        "path": "/resume",
+        "icon": "fas fa-file"
     }
 ]

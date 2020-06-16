@@ -1,50 +1,67 @@
 <template>
-  <v-app-bar app :color="locationColor" :flat="locationFlat" v-scroll="onScroll" dark>
-    <v-spacer></v-spacer>
+  <div>
+    <MobileNavigation :drawer="drawer" :draw.sync="drawer" />
+    <v-app-bar
+      app
+      :color="locationColor"
+      :flat="locationFlat"
+      v-scroll="onScroll"
+      dark
+      clipped-left
+    >
+      <v-app-bar-nav-icon v-if="this.$vuetify.breakpoint.mobile" @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-spacer></v-spacer>
 
-    <div class="pr-16">
-      <!-- Navigation links -->
-      <template v-for="link in menu">
-        <v-btn
-          :to="link.path"
-          @click="_menu(link.text)"
-          text
-          v-bind:key="link.text"
-          :color="appBarIconColor"
-        >{{ link.text }}</v-btn>
-      </template>
-
-      <!-- Social networks -->
-      <v-tooltip bottom v-for="(social, key) in socialNetworks" v-bind:key="key">
-        <template v-slot:activator="{ on, attrs }">
+      <div class="pr-16" v-if="!this.$vuetify.breakpoint.mobile">
+        <!-- Navigation links -->
+        <template v-for="link in menu">
           <v-btn
-            v-bind="attrs"
-            v-on="on"
-            @click="_social(social.text)"
-            :href="social.href"
-            target="_blank"
-            icon
-            color="white"
-          >
-            <v-icon>{{ social.icon }}</v-icon>
-          </v-btn>
+            :to="link.path"
+            @click="_menu(link.text)"
+            text
+            v-bind:key="link.text"
+            :color="appBarIconColor"
+          >{{ link.text }}</v-btn>
         </template>
-        <span>{{ social.text }}</span>
-      </v-tooltip>
-    </div>
-  </v-app-bar>
+
+        <!-- Social networks -->
+        <v-tooltip bottom v-for="(social, key) in socialNetworks" v-bind:key="key">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              v-on="on"
+              @click="_social(social.text)"
+              :href="social.href"
+              target="_blank"
+              icon
+              color="white"
+            >
+              <v-icon>{{ social.icon }}</v-icon>
+            </v-btn>
+          </template>
+          <span>{{ social.text }}</span>
+        </v-tooltip>
+      </div>
+    </v-app-bar>
+  </div>
 </template>
 
 <script>
 import socialNetworks from "./../assets/data/socialNetworks.json";
 import menu from "./../assets/data/menu.json";
+import MobileNavigation from "./MobileNavigation";
+
 export default {
   name: "Header",
   data: () => ({
     offsetTop: 0,
     socialNetworks: socialNetworks,
-    menu: menu
+    menu: menu,
+    drawer: false
   }),
+  components: {
+    MobileNavigation
+  },
   computed: {
     // a computed getter
     locationColor: function() {
@@ -57,6 +74,7 @@ export default {
       return this.appBarLocDef();
     }
   },
+
   methods: {
     _social(text) {
       this.$gtag.event("Social", {
