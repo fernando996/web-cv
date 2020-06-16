@@ -5,9 +5,27 @@
       v-model="drawer"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
+      src="@/assets/img/web.png"
     >
-      <v-list dense nav>
-        <v-list-item v-for="item in menu" :key="item.text" link :to="item.path">
+      <v-list-item two-line class="px-0">
+        <v-list-item-avatar>
+          <img src="@/assets/img/programador.png" />
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title>Fernando Martins</v-list-item-title>
+          <v-list-item-subtitle>Software Engineer</v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list dense nav dark>
+        <v-list-item
+          color="black"
+          v-for="item in menu"
+          :key="item.text"
+          link
+          :to="item.path"
+          @click="_menu(`${item.text}-Mobile`)"
+        >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -23,22 +41,24 @@
       :flat="locationFlat"
       v-scroll="onScroll"
       dark
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
+      :clipped-left="this.$vuetify.breakpoint.lgAndUp"
     >
       <v-app-bar-nav-icon v-if="this.$vuetify.breakpoint.mobile" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
 
-      <div class="pr-16" v-if="!this.$vuetify.breakpoint.mobile">
+      <div :class="this.$vuetify.breakpoint.mobile ? '': 'pr-16'">
         <!-- Navigation links -->
-        <template v-for="link in menu">
-          <v-btn
-            :to="link.path"
-            @click="_menu(link.text)"
-            text
-            v-bind:key="link.text"
-            :color="appBarIconColor"
-          >{{ link.text }}</v-btn>
-        </template>
+        <span v-if="!this.$vuetify.breakpoint.mobile">
+          <template v-for="link in menu">
+            <v-btn
+              :to="link.path"
+              @click="_menu(link.text)"
+              text
+              v-bind:key="link.text"
+              :color="appBarIconColor"
+            >{{ link.text }}</v-btn>
+          </template>
+        </span>
 
         <!-- Social networks -->
         <v-tooltip bottom v-for="(social, key) in socialNetworks" v-bind:key="key">
