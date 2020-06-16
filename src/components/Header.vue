@@ -1,13 +1,29 @@
 <template>
   <div>
-    <MobileNavigation :drawer="drawer" :draw.sync="drawer" />
+    <v-navigation-drawer
+      v-if="this.$vuetify.breakpoint.mobile"
+      v-model="drawer"
+      :clipped="$vuetify.breakpoint.lgAndUp"
+      app
+    >
+      <v-list dense nav>
+        <v-list-item v-for="item in menu" :key="item.text" link :to="item.path">
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.text }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-app-bar
       app
       :color="locationColor"
       :flat="locationFlat"
       v-scroll="onScroll"
       dark
-      clipped-left
+      :clipped-left="$vuetify.breakpoint.lgAndUp"
     >
       <v-app-bar-nav-icon v-if="this.$vuetify.breakpoint.mobile" @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
@@ -49,7 +65,7 @@
 <script>
 import socialNetworks from "./../assets/data/socialNetworks.json";
 import menu from "./../assets/data/menu.json";
-import MobileNavigation from "./MobileNavigation";
+// import MobileNavigation from "./MobileNavigation";
 
 export default {
   name: "Header",
@@ -57,10 +73,11 @@ export default {
     offsetTop: 0,
     socialNetworks: socialNetworks,
     menu: menu,
-    drawer: false
+    drawer: false,
+    show: false
   }),
   components: {
-    MobileNavigation
+    // MobileNavigation
   },
   computed: {
     // a computed getter

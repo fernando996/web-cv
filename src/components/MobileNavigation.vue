@@ -1,17 +1,4 @@
-<template>
-  <v-navigation-drawer v-model="show" clipped app>
-    <v-list dense nav>
-      <v-list-item v-for="item in menu" :key="item.text" link>
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.text }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-  </v-navigation-drawer>
-</template>
+<template></template>
 
 <script>
 import socialNetworks from "./../assets/data/socialNetworks.json";
@@ -21,8 +8,8 @@ export default {
   data: () => ({
     offsetTop: 0,
     socialNetworks: socialNetworks,
-    menu: menu,
-    show: false
+    menu: menu
+    // show: false
   }),
   props: {
     drawer: Boolean
